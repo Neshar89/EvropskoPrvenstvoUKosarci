@@ -1,0 +1,115 @@
+﻿@model IEnumerable<EvropskoPrvenstvoUKosarci2.Models.Utakmice>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/Stilizacija.css" rel="stylesheet" />
+}
+    <br />
+<h2>Utakmice</h2>
+
+<p>
+    @if (Session["uloga"].ToString() == "Delegat")
+    {
+        @Html.ActionLink("Dodajte novu utakmicu", "Create", null, new { @class = "btn btn-warning" })
+    }
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.VremeOdigravanja)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reprezentacija.NazivReprezentacija)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Q1_Domacin)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Q2_Domacin)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Q3_Domacin)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Q4_Domacin)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.FinalDomacin)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Grupa.NazivGrupe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hala.NazivHale)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VremeOdigravanja)
+            </td>
+            <td>
+                <a onclick="window.location='@Url.Action("Details/" + item.ReprezentacijaDomacinId.ToString(), "Reprezentacija")'" onmouseover="" style="cursor: pointer;">@Html.DisplayFor(modelItem => item.Reprezentacija.NazivReprezentacija)</a><br /><br />
+                <a onclick="window.location='@Url.Action("Details/" + item.ReprezentacijaGostId.ToString(), "Reprezentacija")'" onmouseover="" style="cursor: pointer;">@Html.DisplayFor(modelItem => item.Reprezentacija1.NazivReprezentacija)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Q1_Domacin)<br /><br />
+                @Html.DisplayFor(modelItem => item.Q1_Gost)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Q2_Domacin)<br /><br />
+                @Html.DisplayFor(modelItem => item.Q2_Gost)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Q3_Domacin)<br /><br />
+                @Html.DisplayFor(modelItem => item.Q3_Gost)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Q4_Domacin)<br /><br />
+                @Html.DisplayFor(modelItem => item.Q4_Gost)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.FinalDomacin)<br /><br />
+                @Html.DisplayFor(modelItem => item.FinalGost)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Grupa.NazivGrupe)
+            </td>
+            <td>
+                <a onclick="window.location='@Url.Action("Details/" + item.HalaId.ToString(), "Hala")'" onmouseover="" style="cursor: pointer;">@Html.DisplayFor(modelItem => item.Hala.NazivHale)</a>
+            </td>
+
+
+            <td>
+                @if (Session["uloga"].ToString() == "Delegat")
+                {
+                    @Html.ActionLink("Izmeni", "Edit", new { id = item.UtakmiceId }, new { @class = "btn btn-warning" })
+                } |
+
+                @Html.ActionLink("Detalji", "Details", new { id = item.UtakmiceId }, new { @class = "btn btn-warning" }) |
+
+                @if (Session["uloga"].ToString() == "Delegat")
+                {
+                    @Html.ActionLink("Obriši", "Delete", new { id = item.UtakmiceId }, new { @class = "btn btn-warning" })
+                }
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,80 @@
+﻿
+
+body {
+    background-color: #d9d9d9;
+}
+
+#footer {
+    background-color: #000000;
+    color: #e35000;
+    padding-top: 15px;
+}
+
+#log {
+    color: #e35000;
+    background: #e35000;
+}
+
+.navbar-brand {
+    color: #e35000;
+}
+    .navbar-brand:hover, .log:hover {
+        font-weight: 800;
+        color: #e35000;
+        background-color: #000000;
+    }
+
+#navbar, .log {
+    background-color: #000000;
+    color: #e35000;
+    padding-top: 1%;
+}
+
+#navbar {
+    
+    width:100%;
+}
+
+.picture {
+    width: 55%;
+    float:right;
+}
+
+
+
+.btn-warning, #panelHeading, #btn {
+    background-color: #e35000;
+   
+}
+
+#panel, #details {
+    width: 30%;
+    height:100%;
+    float:left;
+}
+
+
+/*Pocetna stranica*/
+
+.container .images {
+    float: left;
+    text-align: center;
+    width: 50%;
+    padding: 10px;
+}
+
+.container .images img{
+    width: 80%;
+    transition: transform .25s; /*animacija*/
+}
+
+.container .images img:hover {
+    transform: scale(1.1);
+}
+
+
+
+
+
+
+

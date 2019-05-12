@@ -1,0 +1,83 @@
+﻿@model EvropskoPrvenstvoUKosarci2.Models.Igrac
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/Stilizacija.css" rel="stylesheet" />
+}
+    <br />
+<h2>Obriši</h2>
+
+<h3>Da li ste sigurni da želite da izbrišete ovog igrača iz liste?</h3>
+<div>
+    <h4>Igrač</h4>
+    
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prezime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prezime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Visina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Visina)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tezina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tezina)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojDresa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrojDresa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pozicija.NazivPozicije)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pozicija.NazivPozicije)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reprezentacija.NazivReprezentacija)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reprezentacija.NazivReprezentacija)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Obriši" class="btn btn-warning" /> |
+            @Html.ActionLink("Nazad na igrače", "Index",null, new { @class = "btn btn-warning" })
+        </div>
+    }
+</div>

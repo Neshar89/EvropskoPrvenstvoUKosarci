@@ -1,0 +1,119 @@
+﻿@model EvropskoPrvenstvoUKosarci2.Models.Utakmice
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/Stilizacija.css" rel="stylesheet" />
+}
+<br />
+<h2>Detalji</h2>
+
+<div>
+    <h4>Utakmice</h4>
+   
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VremeOdigravanja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VremeOdigravanja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Q1_Domacin)
+        </dt>
+
+        <dd>
+            <label>Domaćin</label> @Html.DisplayFor(model => model.Q1_Domacin)
+        </dd>
+
+        <dd>
+            <label>Gost</label> @Html.DisplayFor(model => model.Q1_Gost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Q2_Domacin)
+        </dt>
+
+        <dd>
+            <label>Domaćin</label> @Html.DisplayFor(model => model.Q2_Domacin)
+        </dd>
+
+        <dd>
+            <label>Gost</label> @Html.DisplayFor(model => model.Q2_Gost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Q3_Domacin)
+        </dt>
+
+        <dd>
+            <label>Domaćin</label> @Html.DisplayFor(model => model.Q3_Domacin)
+        </dd>
+
+        <dd>
+            <label>Gost</label> @Html.DisplayFor(model => model.Q3_Gost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Q4_Domacin)
+        </dt>
+
+        <dd>
+            <label>Domaćin</label> @Html.DisplayFor(model => model.Q4_Domacin)
+        </dd>
+
+        <dd>
+            <label>Gost</label> @Html.DisplayFor(model => model.Q4_Gost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FinalDomacin)
+        </dt>
+
+        <dd>
+            <label>Domaćin</label> @Html.DisplayFor(model => model.FinalDomacin)
+        </dd>
+
+        <dd>
+            <label>Gost</label> @Html.DisplayFor(model => model.FinalGost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Grupa.NazivGrupe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grupa.NazivGrupe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hala.NazivHale)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hala.NazivHale)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reprezentacija.NazivReprezentacija)
+        </dt>
+
+        <dd>
+            <label>Domaćin</label> @Html.DisplayFor(model => model.Reprezentacija.NazivReprezentacija)
+        </dd>
+
+        <dd>
+            <label>Gost</label> @Html.DisplayFor(model => model.Reprezentacija1.NazivReprezentacija)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (Session["uloga"].ToString() == "Delegat")
+    {
+        @Html.ActionLink("Izmeni", "Edit", new { id = Model.UtakmiceId }, new { @class = "btn btn-warning" })
+    } |
+    @Html.ActionLink("Nazad na utakmice", "Index", null, new { @class = "btn btn-warning" })
+</p>

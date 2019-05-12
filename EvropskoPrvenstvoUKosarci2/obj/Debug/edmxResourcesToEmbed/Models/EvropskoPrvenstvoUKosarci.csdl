@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EvropskoPrvenstvoUKosarciModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Grad">
+    <Key>
+      <PropertyRef Name="GradId" />
+    </Key>
+    <Property Name="GradId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NazivGrada" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ZemljeGradovi" Relationship="Self.FK_zemlje_gradovi_grad" FromRole="Grad" ToRole="ZemljeGradovi" />
+  </EntityType>
+  <EntityType Name="Grupa">
+    <Key>
+      <PropertyRef Name="GrupaId" />
+    </Key>
+    <Property Name="GrupaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NazivGrupe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Utakmice" Relationship="Self.FK_Utakmica_Grupa" FromRole="Grupa" ToRole="Utakmice" />
+  </EntityType>
+  <EntityType Name="Hala">
+    <Key>
+      <PropertyRef Name="HalaId" />
+    </Key>
+    <Property Name="HalaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NazivHale" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Adresa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Utakmice" Relationship="Self.FK_Utakmica_Hala" FromRole="Hala" ToRole="Utakmice" />
+  </EntityType>
+  <EntityType Name="Igrac">
+    <Key>
+      <PropertyRef Name="IgracId" />
+    </Key>
+    <Property Name="IgracId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Visina" Type="Int32" />
+    <Property Name="Tezina" Type="Int32" />
+    <Property Name="BrojDresa" Type="Int32" />
+    <Property Name="PozicijaId" Type="Int32" />
+    <Property Name="ReprezentacijaId" Type="Int32" />
+    <NavigationProperty Name="Pozicija" Relationship="Self.FK_igrac_pozicija" FromRole="Igrac" ToRole="Pozicija" />
+    <NavigationProperty Name="Reprezentacija" Relationship="Self.FK_igrac_reprezentacija" FromRole="Igrac" ToRole="Reprezentacija" />
+  </EntityType>
+  <EntityType Name="Korisnici">
+    <Key>
+      <PropertyRef Name="KorisnikID" />
+    </Key>
+    <Property Name="KorisnikID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KorisnickoIme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Sifra" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Uloga" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pozicija">
+    <Key>
+      <PropertyRef Name="PozicijaId" />
+    </Key>
+    <Property Name="PozicijaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NazivPozicije" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Igrac" Relationship="Self.FK_igrac_pozicija" FromRole="Pozicija" ToRole="Igrac" />
+  </EntityType>
+  <EntityType Name="Reprezentacija">
+    <Key>
+      <PropertyRef Name="ReprezentacijaId" />
+    </Key>
+    <Property Name="ReprezentacijaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NazivReprezentacija" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ZemljeId" Type="Int32" />
+    <NavigationProperty Name="Igrac" Relationship="Self.FK_igrac_reprezentacija" FromRole="Reprezentacija" ToRole="Igrac" />
+    <NavigationProperty Name="Zemlje" Relationship="Self.FK_reprezentacija_zemlje" FromRole="Reprezentacija" ToRole="Zemlje" />
+    <NavigationProperty Name="Utakmice" Relationship="Self.FK_Utakmica_Reprezentacija" FromRole="Reprezentacija" ToRole="Utakmice" />
+    <NavigationProperty Name="Utakmice1" Relationship="Self.FK_Utakmica_Reprezentacija1" FromRole="Reprezentacija" ToRole="Utakmice" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Utakmice">
+    <Key>
+      <PropertyRef Name="UtakmiceId" />
+    </Key>
+    <Property Name="UtakmiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReprezentacijaDomacinId" Type="Int32" Nullable="false" />
+    <Property Name="ReprezentacijaGostId" Type="Int32" Nullable="false" />
+    <Property Name="GrupaId" Type="Int32" Nullable="false" />
+    <Property Name="HalaId" Type="Int32" Nullable="false" />
+    <Property Name="VremeOdigravanja" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Q1_Domacin" Type="Int32" />
+    <Property Name="Q1_Gost" Type="Int32" />
+    <Property Name="Q2_Domacin" Type="Int32" />
+    <Property Name="Q2_Gost" Type="Int32" />
+    <Property Name="Q3_Domacin" Type="Int32" />
+    <Property Name="Q3_Gost" Type="Int32" />
+    <Property Name="Q4_Domacin" Type="Int32" />
+    <Property Name="Q4_Gost" Type="Int32" />
+    <Property Name="FinalDomacin" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="FinalGost" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Grupa" Relationship="Self.FK_Utakmica_Grupa" FromRole="Utakmice" ToRole="Grupa" />
+    <NavigationProperty Name="Hala" Relationship="Self.FK_Utakmica_Hala" FromRole="Utakmice" ToRole="Hala" />
+    <NavigationProperty Name="Reprezentacija" Relationship="Self.FK_Utakmica_Reprezentacija" FromRole="Utakmice" ToRole="Reprezentacija" />
+    <NavigationProperty Name="Reprezentacija1" Relationship="Self.FK_Utakmica_Reprezentacija1" FromRole="Utakmice" ToRole="Reprezentacija" />
+  </EntityType>
+  <EntityType Name="Zemlje">
+    <Key>
+      <PropertyRef Name="ZemljeId" />
+    </Key>
+    <Property Name="ZemljeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NazivZemlje" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Reprezentacija" Relationship="Self.FK_reprezentacija_zemlje" FromRole="Zemlje" ToRole="Reprezentacija" />
+    <NavigationProperty Name="ZemljeGradovi" Relationship="Self.FK_zemlje_gradovi_zemlje" FromRole="Zemlje" ToRole="ZemljeGradovi" />
+  </EntityType>
+  <EntityType Name="ZemljeGradovi">
+    <Key>
+      <PropertyRef Name="ZemljeGradoviId" />
+    </Key>
+    <Property Name="ZemljeGradoviId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ZemljeId" Type="Int32" />
+    <Property Name="GradId" Type="Int32" />
+    <NavigationProperty Name="Grad" Relationship="Self.FK_zemlje_gradovi_grad" FromRole="ZemljeGradovi" ToRole="Grad" />
+    <NavigationProperty Name="Zemlje" Relationship="Self.FK_zemlje_gradovi_zemlje" FromRole="ZemljeGradovi" ToRole="Zemlje" />
+  </EntityType>
+  <Association Name="FK_zemlje_gradovi_grad">
+    <End Role="Grad" Type="Self.Grad" Multiplicity="0..1" />
+    <End Role="ZemljeGradovi" Type="Self.ZemljeGradovi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grad">
+        <PropertyRef Name="GradId" />
+      </Principal>
+      <Dependent Role="ZemljeGradovi">
+        <PropertyRef Name="GradId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Utakmica_Grupa">
+    <End Role="Grupa" Type="Self.Grupa" Multiplicity="1" />
+    <End Role="Utakmice" Type="Self.Utakmice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grupa">
+        <PropertyRef Name="GrupaId" />
+      </Principal>
+      <Dependent Role="Utakmice">
+        <PropertyRef Name="GrupaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Utakmica_Hala">
+    <End Role="Hala" Type="Self.Hala" Multiplicity="1" />
+    <End Role="Utakmice" Type="Self.Utakmice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hala">
+        <PropertyRef Name="HalaId" />
+      </Principal>
+      <Dependent Role="Utakmice">
+        <PropertyRef Name="HalaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_igrac_pozicija">
+    <End Role="Pozicija" Type="Self.Pozicija" Multiplicity="0..1" />
+    <End Role="Igrac" Type="Self.Igrac" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pozicija">
+        <PropertyRef Name="PozicijaId" />
+      </Principal>
+      <Dependent Role="Igrac">
+        <PropertyRef Name="PozicijaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_igrac_reprezentacija">
+    <End Role="Reprezentacija" Type="Self.Reprezentacija" Multiplicity="0..1" />
+    <End Role="Igrac" Type="Self.Igrac" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reprezentacija">
+        <PropertyRef Name="ReprezentacijaId" />
+      </Principal>
+      <Dependent Role="Igrac">
+        <PropertyRef Name="ReprezentacijaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_reprezentacija_zemlje">
+    <End Role="Zemlje" Type="Self.Zemlje" Multiplicity="0..1" />
+    <End Role="Reprezentacija" Type="Self.Reprezentacija" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zemlje">
+        <PropertyRef Name="ZemljeId" />
+      </Principal>
+      <Dependent Role="Reprezentacija">
+        <PropertyRef Name="ZemljeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Utakmica_Reprezentacija">
+    <End Role="Reprezentacija" Type="Self.Reprezentacija" Multiplicity="1" />
+    <End Role="Utakmice" Type="Self.Utakmice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reprezentacija">
+        <PropertyRef Name="ReprezentacijaId" />
+      </Principal>
+      <Dependent Role="Utakmice">
+        <PropertyRef Name="ReprezentacijaDomacinId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Utakmica_Reprezentacija1">
+    <End Role="Reprezentacija" Type="Self.Reprezentacija" Multiplicity="1" />
+    <End Role="Utakmice" Type="Self.Utakmice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reprezentacija">
+        <PropertyRef Name="ReprezentacijaId" />
+      </Principal>
+      <Dependent Role="Utakmice">
+        <PropertyRef Name="ReprezentacijaGostId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_zemlje_gradovi_zemlje">
+    <End Role="Zemlje" Type="Self.Zemlje" Multiplicity="0..1" />
+    <End Role="ZemljeGradovi" Type="Self.ZemljeGradovi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zemlje">
+        <PropertyRef Name="ZemljeId" />
+      </Principal>
+      <Dependent Role="ZemljeGradovi">
+        <PropertyRef Name="ZemljeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EvropskoPrvenstvoUKosarciEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Grad" EntityType="Self.Grad" />
+    <EntitySet Name="Grupa" EntityType="Self.Grupa" />
+    <EntitySet Name="Hala" EntityType="Self.Hala" />
+    <EntitySet Name="Igrac" EntityType="Self.Igrac" />
+    <EntitySet Name="Korisnici" EntityType="Self.Korisnici" />
+    <EntitySet Name="Pozicija" EntityType="Self.Pozicija" />
+    <EntitySet Name="Reprezentacija" EntityType="Self.Reprezentacija" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Utakmice" EntityType="Self.Utakmice" />
+    <EntitySet Name="Zemlje" EntityType="Self.Zemlje" />
+    <EntitySet Name="ZemljeGradovi" EntityType="Self.ZemljeGradovi" />
+    <AssociationSet Name="FK_zemlje_gradovi_grad" Association="Self.FK_zemlje_gradovi_grad">
+      <End Role="Grad" EntitySet="Grad" />
+      <End Role="ZemljeGradovi" EntitySet="ZemljeGradovi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Utakmica_Grupa" Association="Self.FK_Utakmica_Grupa">
+      <End Role="Grupa" EntitySet="Grupa" />
+      <End Role="Utakmice" EntitySet="Utakmice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Utakmica_Hala" Association="Self.FK_Utakmica_Hala">
+      <End Role="Hala" EntitySet="Hala" />
+      <End Role="Utakmice" EntitySet="Utakmice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_igrac_pozicija" Association="Self.FK_igrac_pozicija">
+      <End Role="Pozicija" EntitySet="Pozicija" />
+      <End Role="Igrac" EntitySet="Igrac" />
+    </AssociationSet>
+    <AssociationSet Name="FK_igrac_reprezentacija" Association="Self.FK_igrac_reprezentacija">
+      <End Role="Reprezentacija" EntitySet="Reprezentacija" />
+      <End Role="Igrac" EntitySet="Igrac" />
+    </AssociationSet>
+    <AssociationSet Name="FK_reprezentacija_zemlje" Association="Self.FK_reprezentacija_zemlje">
+      <End Role="Zemlje" EntitySet="Zemlje" />
+      <End Role="Reprezentacija" EntitySet="Reprezentacija" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Utakmica_Reprezentacija" Association="Self.FK_Utakmica_Reprezentacija">
+      <End Role="Reprezentacija" EntitySet="Reprezentacija" />
+      <End Role="Utakmice" EntitySet="Utakmice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Utakmica_Reprezentacija1" Association="Self.FK_Utakmica_Reprezentacija1">
+      <End Role="Reprezentacija" EntitySet="Reprezentacija" />
+      <End Role="Utakmice" EntitySet="Utakmice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_zemlje_gradovi_zemlje" Association="Self.FK_zemlje_gradovi_zemlje">
+      <End Role="Zemlje" EntitySet="Zemlje" />
+      <End Role="ZemljeGradovi" EntitySet="ZemljeGradovi" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

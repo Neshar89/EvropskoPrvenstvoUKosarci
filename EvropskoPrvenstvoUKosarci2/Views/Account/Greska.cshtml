@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Greska";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/Stilizacija.css" rel="stylesheet" />
+}
+
+<h2>Greška</h2>
+
+<p>Korisničko ime ili lozinka nisu pravilno uneti, molimo Vas probajte ponovo.</p>
+
+@Html.ActionLink("Nazad na prijavu", "Login", null, new { @class = "btn btn-warning" })
+

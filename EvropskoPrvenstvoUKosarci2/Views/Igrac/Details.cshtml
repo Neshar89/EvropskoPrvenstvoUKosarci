@@ -1,0 +1,83 @@
+﻿@model EvropskoPrvenstvoUKosarci2.Models.Igrac
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/Stilizacija.css" rel="stylesheet" />
+}
+<br />
+<h2>Detalji</h2>
+
+<div id="panel">
+    <h4>Igrač</h4>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prezime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prezime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Visina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Visina)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tezina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tezina)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojDresa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrojDresa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pozicija.NazivPozicije)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pozicija.NazivPozicije)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reprezentacija.NazivReprezentacija)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reprezentacija.NazivReprezentacija)
+        </dd>
+
+    </dl>
+    <div>
+        @if (Session["uloga"].ToString() == "Delegat")
+        {
+            @Html.ActionLink("Izmeni", "Edit", new { id = Model.IgracId }, new { @class = "btn btn-warning" })
+        } |
+        @Html.ActionLink("Nazad na igrače", "Index", null, new { @class = "btn btn-warning" })
+    </div>
+</div>
+
+<div class="picture">
+    <img width="100%" src="/Content/Images/igraci2.jpg" alt="Igrači" />
+</div>

@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "GreskaEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/Stilizacija.css" rel="stylesheet" />
+}
+
+<h2>Greška</h2>
+
+<p>Ne možete da dodate tu halu, ona već postoji u listi.</p>
+
+@Html.ActionLink("Nazad na hale", "Index", null, new { @class = "btn btn-warning" })
+

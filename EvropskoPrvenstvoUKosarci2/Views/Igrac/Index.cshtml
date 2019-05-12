@@ -1,0 +1,84 @@
+﻿@model IEnumerable<EvropskoPrvenstvoUKosarci2.Models.Igrac>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/Stilizacija.css" rel="stylesheet" />
+}
+    <br />
+<h2>Igrači</h2>
+
+<p>
+    @if (Session["uloga"].ToString() == "Delegat")
+    {
+        @Html.ActionLink("Dodajte novog igrača", "Create", null, new { @class = "btn btn-warning" })
+    }
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prezime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Visina)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tezina)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BrojDresa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pozicija.NazivPozicije)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reprezentacija.NazivReprezentacija)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prezime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Visina)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tezina)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrojDresa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pozicija.NazivPozicije)
+            </td>
+            <td>
+                <a onclick="window.location='@Url.Action("Details/" + item.ReprezentacijaId.ToString(), "Reprezentacija")'" onmouseover="" style="cursor: pointer;">@Html.DisplayFor(modelItem => item.Reprezentacija.NazivReprezentacija)</a>
+            </td>
+            <td>
+                @if (Session["uloga"].ToString() == "Delegat")
+                {
+                    @Html.ActionLink("Izmeni", "Edit", new { id = item.IgracId }, new { @class = "btn btn-warning" })
+                } |
+
+                @Html.ActionLink("Detalji", "Details", new { id = item.IgracId }, new { @class = "btn btn-warning" }) |
+
+                @if (Session["uloga"].ToString() == "Delegat")
+                {
+                    @Html.ActionLink("Obriši", "Delete", new { id = item.IgracId }, new { @class = "btn btn-warning" })
+                }
+            </td>
+        </tr>
+    }
+
+</table>

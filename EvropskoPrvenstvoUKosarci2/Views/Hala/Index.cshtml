@@ -1,0 +1,65 @@
+﻿@model IEnumerable<EvropskoPrvenstvoUKosarci2.Models.Hala>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    <link href="~/Content/Stilizacija.css" rel="stylesheet" />
+}
+<br />
+<h2>Hale</h2>
+
+<p>
+    @if (Session["uloga"].ToString() == "Delegat")
+    {
+        
+        @Html.ActionLink("Dodajte novu halu", "Create", null, new { @class= "btn btn-warning"})
+    }
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NazivHale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adresa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefon)
+        </th>
+        <th></th>
+        
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NazivHale)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Adresa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefon)
+        </td>
+        <td>
+            @if (Session["uloga"].ToString() == "Delegat")
+            {
+                @Html.ActionLink("Izmeni", "Edit", new { id = item.HalaId }, new { @class = "btn btn-warning" })
+            } |
+
+            @Html.ActionLink("Detalji", "Details", new { id = item.HalaId }, new { @class = "btn btn-warning" }) |
+
+            @if (Session["uloga"].ToString() == "Delegat")
+            {
+                @Html.ActionLink("Obriši", "Delete", new { id = item.HalaId }, new { @class = "btn btn-warning" })
+            }
+        </td>
+
+    </tr>
+    }
+
+</table>

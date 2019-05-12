@@ -1,0 +1,123 @@
+﻿@model EvropskoPrvenstvoUKosarci2.Models.Utakmice
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/Stilizacija.css" rel="stylesheet" />
+}
+    <br />
+<h2>Obriši</h2>
+
+<h3>Da li ste sigurni da želite da obrišete ovu utakmicu?</h3>
+<div>
+    
+    
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VremeOdigravanja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VremeOdigravanja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Q1_Domacin)
+        </dt>
+
+        <dd>
+            <label>Domaćin</label> @Html.DisplayFor(model => model.Q1_Domacin)
+        </dd>
+
+        <dd>
+            <label>Gost</label> @Html.DisplayFor(model => model.Q1_Gost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Q2_Domacin)
+        </dt>
+
+        <dd>
+            <label>Domaćin</label> @Html.DisplayFor(model => model.Q2_Domacin)
+        </dd>
+
+        <dd>
+            <label>Gost</label> @Html.DisplayFor(model => model.Q2_Gost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Q3_Domacin)
+        </dt>
+
+        <dd>
+            <label>Domaćin</label> @Html.DisplayFor(model => model.Q3_Domacin)
+        </dd>
+
+        <dd>
+            <label>Gost</label> @Html.DisplayFor(model => model.Q3_Gost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Q4_Domacin)
+        </dt>
+
+        <dd>
+            <label>Domaćin</label> @Html.DisplayFor(model => model.Q4_Domacin)
+        </dd>
+
+        <dd>
+            <label>Gost</label> @Html.DisplayFor(model => model.Q4_Gost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FinalDomacin)
+        </dt>
+
+        <dd>
+            <label>Domaćin</label> @Html.DisplayFor(model => model.FinalDomacin)
+        </dd>
+
+        <dd>
+            <label>Gost</label> @Html.DisplayFor(model => model.FinalGost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Grupa.NazivGrupe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grupa.NazivGrupe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hala.NazivHale)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hala.NazivHale)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reprezentacija.NazivReprezentacija)
+        </dt>
+
+        <dd>
+            <label>Domaćin</label> @Html.DisplayFor(model => model.Reprezentacija.NazivReprezentacija)
+        </dd>
+
+        <dd>
+            <label>Gost</label> @Html.DisplayFor(model => model.Reprezentacija1.NazivReprezentacija)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Obriši" class="btn btn-warning" /> |
+            @Html.ActionLink("Nazad na utakmice", "Index", null, new { @class = "btn btn-warning" })
+        </div>
+    }
+</div>

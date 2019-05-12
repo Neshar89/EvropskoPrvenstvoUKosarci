@@ -1,0 +1,42 @@
+﻿@model EvropskoPrvenstvoUKosarci2.Models.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    <link href="~/Content/Stilizacija.css" rel="stylesheet" />
+
+}
+
+    <body>
+
+
+        <br /><br /><br />
+        <div id="panel" class="panel panel-heading">
+
+            <div id="panelHeading" class="panel-heading">Ulogujte se</div>
+            <div class="panel-body">
+                <div>
+                    @using (Html.BeginForm())
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.KorisnickoIme, "Korisničko ime")
+                            @Html.TextBoxFor(m => m.KorisnickoIme, null, new { @class = "form-control", placeholder = "Korisničko ime" })
+                            @Html.ValidationMessageFor(m => m.KorisnickoIme, null, new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Sifra, "Lozinka")
+                            @Html.PasswordFor(m => m.Sifra, new { @class = "form-control", placeholder = "Lozinka" })
+                            @Html.ValidationMessageFor(m => m.Sifra, null, new { @class = "text-danger" })
+                        </div>
+                        <input type="submit" value="Prijavite se" class="btn btn-warning" />
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="picture">
+            <img width="100%" src="/Content/Images/igraci.jpg" alt="Naslovna" />
+        </div>
+
+    </body>
+

@@ -1,0 +1,57 @@
+﻿@using EvropskoPrvenstvoUKosarci2.Models;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Evropsko prvenstvo u košarci</title>
+    <link href="~/Content/Stilizacija.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div id="navbar" class="navbar navbar-fixed-top">
+        <div class="container">
+            
+            <div class="navbar-header">
+
+                <button type="button" id="log" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Evropsko prvenstvo u košarci", "Pocetna", "Prvenstvo", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav pull-right">
+                    @if (Session["uloga"] != null)
+                    {
+                        
+                        <li>@Html.ActionLink("Logout", "Logout", "Account", new { area = "" }, new { @class = "log" })</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Login", "Login", "Account", new { area = "" }, new { @class = "log" })</li>
+                    }
+
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <br />
+        <br />
+        <footer id="footer" class="navbar navbar-fixed-bottom navbar text-center">
+            <p>&copy; Ivica Milosavljević, Nenad Radisavljević, Mihailo Maksimović @DateTime.Now.Year - Evropsko prvenstvo u košarci</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

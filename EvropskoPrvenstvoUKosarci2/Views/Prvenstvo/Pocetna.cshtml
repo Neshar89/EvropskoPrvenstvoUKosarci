@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Pocetna";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/Stilizacija.css" rel="stylesheet" />
+}
+
+
+
+<br />
+
+
+
+    <div class="container">
+        <div class="images">
+            <h3>REPREZENTACIJE</h3>
+            <a href="@Url.Action("Index", "Reprezentacija")"><img src="/Content/Images/Reprezentacije.jpg" alt="reprezentacije" /></a>
+        </div>
+
+        <div class="images">
+            <h3>IGRAČI</h3>
+            <a href="@Url.Action("Index", "Igrac")"><img src="/Content/Images/igraci.jpg" alt="Igrači" /></a>
+        </div>
+    </div>
+  
+    <div class="container">
+        <div class="images">
+            <h3>UTAKMICE</h3>
+            <a href="@Url.Action("Index", "Utakmice")"><img src="/Content/Images/utakmice.jpg" alt="Utakmice" /></a>
+        </div>
+
+        <div class="images">
+            <h3>HALE</h3>
+            <a href="@Url.Action("Index", "Hala")"><img src="/Content/Images/hala.jpg" alt="Hala" /></a>
+        </div>
+    </div>
+
+

@@ -1,0 +1,188 @@
+﻿@model EvropskoPrvenstvoUKosarci2.Models.Utakmice
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/Stilizacija.css" rel="stylesheet" />
+}
+    <br />
+<h2>Izmeni</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Utakmice</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.UtakmiceId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ReprezentacijaDomacinId, "Domaćin", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ReprezentacijaDomacinId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ReprezentacijaDomacinId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ReprezentacijaGostId, "Gost", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ReprezentacijaGostId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ReprezentacijaGostId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GrupaId, "Grupa", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("GrupaId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.GrupaId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HalaId, "Hala", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("HalaId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.HalaId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VremeOdigravanja, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.VremeOdigravanja, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.VremeOdigravanja, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Q1_Domacin, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <label>Domaćin</label>@Html.EditorFor(model => model.Q1_Domacin, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Q1_Domacin, "", new { @class = "text-danger" })<br />
+                <label>Gost</label>@Html.EditorFor(model => model.Q1_Gost, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Q1_Gost, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Q2_Domacin, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <label>Domaćin</label>@Html.EditorFor(model => model.Q2_Domacin, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Q2_Domacin, "", new { @class = "text-danger" })<br />
+                <label>Gost</label>@Html.EditorFor(model => model.Q2_Gost, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Q2_Gost, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Q3_Domacin, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <label>Domaćin</label>@Html.EditorFor(model => model.Q3_Domacin, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Q3_Domacin, "", new { @class = "text-danger" })
+                <label>Gost</label>@Html.EditorFor(model => model.Q3_Gost, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Q3_Gost, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Q4_Domacin, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <label>Domaćin</label>@Html.EditorFor(model => model.Q4_Domacin, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Q4_Domacin, "", new { @class = "text-danger" })
+                <label>Gost</label>@Html.EditorFor(model => model.Q4_Gost, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Q4_Gost, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FinalDomacin, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <label>Domaćin</label>@Html.EditorFor(model => model.FinalDomacin, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FinalDomacin, "", new { @class = "text-danger" })
+                <label>Gost</label>@Html.EditorFor(model => model.FinalGost, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FinalGost, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Izmeni" class="btn btn-warning" onclick="return generalnaProvera()" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Nazad na utakmice", "Index", null, new { @class = "btn btn-warning" })
+</div>
+
+<script type="text/javascript">
+    function generalnaProvera() {
+
+        var uslov = false;
+        var Datum = document.getElementById("VremeOdigravanja");
+        var Domacin = document.getElementById("ReprezentacijaDomacinId");
+        var Gost = document.getElementById("ReprezentacijaGostId");
+
+        if (Domacin.value == Gost.value) {
+            alert("Molimo vas da izaberete dve različite reprezentacije da igraju na utakmici.")
+            return false;
+        }
+
+        // provera da text input polja nisu prazna
+
+        var numberPolja = document.getElementsByTagName('input');
+        for (element of numberPolja) {
+            if (element.getAttribute("type") == "number") {
+                if (element.value == "" || element.value == null) {
+                    element.placeholder = "polje je obavezno";
+                    element.focus();
+                    uslov = false;
+                    return uslov;
+                }
+                else {
+                    uslov = true;
+                }
+            }
+        }
+
+        if (Datum.value == "" || Datum.value == null) {
+            Datum.placeholder = "polje je obavezno";
+            document.getElementById("VremeOdigravanja").focus();
+            uslov = false;
+            return uslov;
+        }
+        else {
+            uslov = true;
+        }
+
+        //validacija unosa rezultata
+
+        for (element of numberPolja) {
+            if (element.getAttribute("type") == "number" && element.getAttribute("id") != "FinalDomacin" && element.getAttribute("id") != "FinalGost") {
+                if (element.value < 5 || element.value > 60) {
+                    alert("Broj postignutih poena u jednoj četvrtini mora biti izmedju 5 i 60")
+                    element.focus();
+                    uslov = false;
+                    return uslov;
+                }
+                else {
+                    uslov = true;
+                }
+            }
+        }
+
+        //validacija formata datuma i vremena
+
+        var DatumIVreme = document.getElementById("VremeOdigravanja").value;
+        if (!DatumIVreme.match("^(3[01]|[12][0-9]|0[1-9]).(1[0-2]|0[1-9]).[0-9]{4} (2[0-3]|[01]?[0-9]):([0-5]?[0-9]):([0-5]?[0-9])$")) {
+            alert("Molimo vas da unesete datum i vreme odigravanja u ovom formatu 01.01.2019. 00:00:00")
+            document.getElementById("VremeOdigravanja").focus();
+            return false;
+        }
+    }
+</script>
